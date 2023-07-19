@@ -11,8 +11,10 @@ void insertion_sort_list(listint_t **list)
 {
     listint_t *j, *temp, *curr;
 
-    curr = (*list)->next;
+    if (!list || !*list || !(*list)->next)
+        return;
 
+    curr = (*list)->next;
     while (curr)
     {
         j = curr;
