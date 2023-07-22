@@ -46,7 +46,8 @@ int *make_counting(int max, int size, int *array)
 void counting_sort(int *array, size_t size)
 {
 	int *counting, *new_array;
-	int i, max;
+	int max;
+	size_t i;
 
 	if (!array || size < 2)
 		return;
@@ -67,7 +68,10 @@ void counting_sort(int *array, size_t size)
 	{
 		new_array[counting[array[i]] - 1] = array[i];
 		counting[array[i]]--;
-		i--;
+		if (i != 0)
+			i--;
+		else
+			break;
 	}
 	i = 0;
 	while (i < size)
