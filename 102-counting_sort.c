@@ -45,43 +45,33 @@ int *make_counting(int max, int size, int *array)
 
 void counting_sort(int *array, size_t size)
 {
-	int *counting, *new_array;
-	int max;
-	size_t i;
+	int *counting, *sorted;
+	int max, i, j;
 
 	if (!array || size < 2)
 		return;
-
 	max = array[0];
-	for (i = 1; i < size; i++)
+	for (i = 0; i < (int)size; i++)
+	{
 		if (array[i] > max)
 			max = array[i];
-
+	}
 	counting = make_counting(max, size, array);
 	if (!counting)
+		return;
+	sorted = malloc(sizeof(int) * size);
+	if (!sorted)
 	{
 		free(counting);
 		return;
 	}
-
-	print_array(counting, max + 1);
-	new_array = malloc(sizeof(int) * (size));
-	i = size - 1;
-	while (i >= 0)
+	for (i = 0; i < (int)size; i++)
 	{
-		new_array[counting[array[i]] - 1] = array[i];
-		counting[array[i]]--;
-		if (i != 0)
-			i--;
-		else
-			break;
+		sorted[counting[array[i]] - 1] = array[i];
+		counting[array[i]] -= 1;
 	}
-	i = 0;
-	while (i < size)
-	{
-		array[i] = new_array[i];
-		i++;
-	}
-	free(new_array);
+	for (j = 0; j < (int)size; j++)
+		array[j] = sorted[j];
 	free(counting);
+	free(sorted);
 }
