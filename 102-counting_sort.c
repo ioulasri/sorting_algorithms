@@ -59,7 +59,10 @@ void counting_sort(int *array, size_t size)
 
 	counting = make_counting(max, size, array);
 	if (!counting)
+	{
+		free(counting);
 		return;
+	}
 
 	print_array(counting, max + 1);
 	new_array = malloc(sizeof(int) * (size));
@@ -79,4 +82,6 @@ void counting_sort(int *array, size_t size)
 		array[i] = new_array[i];
 		i++;
 	}
+	free(new_array);
+	free(counting);
 }
