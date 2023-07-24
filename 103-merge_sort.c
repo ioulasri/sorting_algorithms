@@ -20,12 +20,12 @@ void merge(int *array, int *temp_arr, size_t low, size_t mid,
 	print_array(array + mid, high - mid);
 
 	for (i = low, j = mid; i < mid && j < high; k++)
-    {
+	{
 		if (array[i] < array[j])
-            temp_arr[k] = array[i++];
-        else
-            temp_arr[k] = array[j++];
-    }
+			temp_arr[k] = array[i++];
+		else
+			temp_arr[k] = array[j++];
+	}
 	for (; i < mid; i++)
 		temp_arr[k++] = array[i];
 	for (; j < high; j++)
