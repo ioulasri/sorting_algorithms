@@ -8,9 +8,9 @@
 
 void swap(int *a, int *b)
 {
-    int tmp = *a;
-    *a = *b;
-    *b = tmp;
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 /**
@@ -22,40 +22,40 @@ void swap(int *a, int *b)
 
 void cocktail_sort_list(listint_t **list)
 {
-    listint_t *tmp = NULL;
-    int swapped = 1;
+	listint_t *tmp = NULL;
+	int swapped = 1;
 
-    if (!list || !(*list) || !(*list)->next)
-        return;
+	if (!list || !(*list) || !(*list)->next)
+		return;
 
-    tmp = *list;
-    while (swapped)
-    {
-        swapped = 0;
-        while (tmp->next)
-        {
-            if (tmp->n > tmp->next->n)
-            {
-                swap((int *)&(tmp->n), (int *)&(tmp->next->n));
-                print_list(*list);
-                swapped = 1;
-            }
-            else
-                tmp = tmp->next;
-        }
-        if (!swapped)
-            break;
-        swapped = 0;
-        while (tmp->prev)
-        {
-            if (tmp->n < tmp->prev->n)
-            {
-                swap((int *)&(tmp->n), (int *)&(tmp->prev->n));
-                print_list(*list);
-                swapped = 1;
-            }
-            else
-                tmp = tmp->prev;
-        }
-    }
+	tmp = *list;
+	while (swapped)
+	{
+		swapped = 0;
+		while (tmp->next)
+		{
+			if (tmp->n > tmp->next->n)
+			{
+				swap((int *)&(tmp->n), (int *)&(tmp->next->n));
+				print_list(*list);
+				swapped = 1;
+			}
+			else
+				tmp = tmp->next;
+		}
+		if (!swapped)
+			break;
+		swapped = 0;
+		while (tmp->prev)
+		{
+			if (tmp->n < tmp->prev->n)
+			{
+				swap((int *)&(tmp->n), (int *)&(tmp->prev->n));
+				print_list(*list);
+				swapped = 1;
+			}
+			else
+				tmp = tmp->prev;
+		}
+	}
 }
