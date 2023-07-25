@@ -28,5 +28,6 @@ void counting_sort(int *array, size_t size);
 int *make_counting(int max, int size, int *array);
 void merge_sort(int *array, size_t size);
 void heap_sort(int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
 
 #endif /* SORT_H */
